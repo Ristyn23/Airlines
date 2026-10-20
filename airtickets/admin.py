@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Aeroport, Plane, Flight, Seat, Ticket
+from .models import Aeroport, Plane, Flight, Profile, Seat, Ticket
 
 @admin.register(Aeroport)
 class AeroportAdmin(admin.ModelAdmin):
@@ -22,3 +22,7 @@ class SeatAdmin(admin.ModelAdmin):
 @admin.register(Ticket)
 class TicketAdmin(admin.ModelAdmin):
     list_display = ['id', 'client', 'flight', 'seat', 'price', 'purchase_date']
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    pass
