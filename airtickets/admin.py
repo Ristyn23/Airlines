@@ -25,4 +25,5 @@ class TicketAdmin(admin.ModelAdmin):
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
-    pass
+    def has_add_permission(self, request):
+        return False

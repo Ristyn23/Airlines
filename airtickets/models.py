@@ -9,13 +9,18 @@ class Profile(models.Model):
         admin = 1
         client = 2
 
-    user = models.OneToOneField("auth.User", on_delete=models.CASCADE, null=True)
-    role = models.IntegerField("Роль", choices=Role)
+    user = models.OneToOneField("auth.User", on_delete=models.CASCADE, null=True, blank=True)
+    role = models.IntegerField("Роль", choices=Role, default=Role.undefined)
+
+    def __str__(self):
+        return self.user.username if self.user else f"Profile {self.id}"
 
 @receiver(post_save, sender=User)
 def on_user_create(sender, instance, created, *args, **kwargs):
     if created:
-        Profile.objects.create(user_instance)
+        Profile.objects.create(user=instance,)
+
+    
     
 # Create your models here.
 class Aeroport(models.Model):
