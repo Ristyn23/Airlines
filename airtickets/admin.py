@@ -11,12 +11,10 @@ class PlaneAdmin(admin.ModelAdmin):
 
 @admin.register(Flight)
 class FlightAdmin(admin.ModelAdmin):
-    # Заменили destination_city и arrival_city на актуальные названия из models.py
     list_display = ['id', 'number', 'depature_date', 'depature_time', 'arrival_date', 'arrival_time', 'depature_aeroport', 'arrival_aeroport', 'plane']
 
 @admin.register(Seat)
 class SeatAdmin(admin.ModelAdmin):
-    # Убрали service_class, так как этого поля нет в вашей модели Seat
     list_display = ['id', 'plane', 'row_number', 'seat_letter'] 
 
 @admin.register(Ticket)
